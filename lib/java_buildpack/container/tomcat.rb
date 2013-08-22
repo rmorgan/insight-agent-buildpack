@@ -20,13 +20,13 @@ require 'java_buildpack/container/container_utils'
 require 'java_buildpack/repository/configured_item'
 require 'java_buildpack/util/application_cache'
 require 'java_buildpack/util/format_duration'
-require_relative 'insight'
+require_relative 'insight'             # Insight added
 
 module JavaBuildpack::Container
 
   # Encapsulates the detect, compile, and release functionality for Tomcat applications.
   class Tomcat
-    include JavaBuildpack::Insight          # added
+    include JavaBuildpack::Insight          # Insight added
 
     # Creates an instance, passing in an arbitrary collection of options.
     #
@@ -44,7 +44,7 @@ module JavaBuildpack::Container
       @configuration = context[:configuration]
       @tomcat_version, @tomcat_uri = Tomcat.find_tomcat(@app_dir, @configuration)
       @support_version, @support_uri = Tomcat.find_support(@app_dir, @configuration)
-      @vcap_services = context[:vcap_services]      # added
+      @vcap_services = context[:vcap_services]      # Insight added
     end
 
     # Detects whether this application is a Tomcat application.
@@ -63,7 +63,7 @@ module JavaBuildpack::Container
       download_support
       link_application
       link_libs
-      install_insight_agent(@vcap_services, java_home(@app_dir, @java_home), tomcat_home)  #added
+      install_insight_agent(@vcap_services, File.join(@app_dir, @java_home), tomcat_home)  # Insight added
     end
 
     # Creates the command to run the Tomcat application.
