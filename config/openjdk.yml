@@ -18,10 +18,6 @@
 repository_root: "http://download.pivotal.io.s3.amazonaws.com/openjdk/lucid/x86_64"
 version: 1.7.0_21
 memory_sizes:
-memory_sizes:
-  heap: 512m
-  stack: 128k
-  permgen: 128k
 memory_heuristics:
   heap: 0.75
   permgen: 0.1
