@@ -20,7 +20,7 @@ version: 1.7.0_21
 memory_sizes:
   heap: 512m
   stack: 256k
-  permgen: 248m
+  permgen: 224m
 memory_heuristics:
   heap: 0.75
   permgen: 0.1
