@@ -3,9 +3,9 @@
 
 module JavaBuildpack::Insight
 
-  HTTP = 'http://'
+  # HTTP = 'http://'
 
-  INSIGHT_AGENT_PATH = '/services/config/agent-download'
+  INSIGHT_AGENT_PATH = 'services/config/agent-download'
 
   INSIGHT_JAR_NAME = "insight-agent.jar"
 
@@ -61,7 +61,7 @@ module JavaBuildpack::Insight
   #
   def download_install_insight_agent(dashboard_address, java_home, container_home)
 
-    dashboard_agent_uri = HTTP + dashboard_address +  INSIGHT_AGENT_PATH
+    dashboard_agent_uri = dashboard_address +  INSIGHT_AGENT_PATH
     print "-----> Downloading Insight Agent from: #{dashboard_agent_uri}\n"
     JavaBuildpack::Util.download('Insight Agent', dashboard_agent_uri, 'Insight Agent', INSIGHT_JAR_NAME, DOWNLOAD_DIR)
     installer_jar = DOWNLOAD_DIR + INSIGHT_JAR_NAME
