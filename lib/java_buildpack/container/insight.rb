@@ -62,13 +62,13 @@ module JavaBuildpack::Insight
   def download_install_insight_agent(dashboard_address, java_home, container_home)
 
     dashboard_agent_uri = HTTP + dashboard_address +  INSIGHT_AGENT_PATH
-    print "-----> Downloading Insight Agent from: #{dashboard_agent_uri}"
+    print "-----> Downloading Insight Agent from: #{dashboard_agent_uri}\n"
     JavaBuildpack::Util.download('Insight Agent', dashboard_agent_uri, 'Insight Agent', INSIGHT_JAR_NAME, DOWNLOAD_DIR)
     installer_jar = DOWNLOAD_DIR + INSIGHT_JAR_NAME
     if File.exists?(installer_jar)
       run_insight_installer(installer_jar, dashboard_address, java_home, container_home)
     else
-      print "-----> Unable to download Insight Agent from: #{dashboard_agent_uri}"
+      print "-----> Unable to download Insight Agent from: #{dashboard_agent_uri}\n"
     end
 
   end
@@ -86,11 +86,11 @@ module JavaBuildpack::Insight
 
     java_bin = java_home + JAVA_BINARY
     if File.exists?(java_bin) && File.exists?(container_home)
-      print "-----> Using java from: #{java_bin}"
-      print "-----> Installing Insight Agemt: #{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install"
+      print "-----> Using java from: #{java_bin}\n"
+      print "-----> Installing Insight Agemt: #{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install\n"
       system("#{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install")
     else
-      print '-----> Unable to run Insight Agent installer, no Java or Container foundv!'
+      print "-----> Unable to run Insight Agent installer, no Java or Container found!\n"
     end
 
   end
