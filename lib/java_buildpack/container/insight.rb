@@ -90,7 +90,11 @@ module JavaBuildpack::Insight
     if File.exists?(java_bin) && File.exists?(container_home)
       # print "-----> Using java from: #{java_bin}\n"
       print "-----> Installing Insight Agent: #{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install\n"
-      system("#{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install")
+      begin
+        system("#{java_bin} -jar #{installer_jar} --path #{container_home} --http_host #{dashboard_address} --install")
+      rescue => e
+        print "-----> Exception: #{e}\n"
+      end
       print "-----> Insight Agent installed\n"
     else
       print "-----> Unable to run Insight Agent installer, no Java or Container found!\n"
