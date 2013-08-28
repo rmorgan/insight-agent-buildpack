@@ -65,7 +65,7 @@ module JavaBuildpack::Insight
     dashboard_agent_uri = dashboard_address +  INSIGHT_AGENT_PATH
     dashboard_host = URI(dashboard_address).host
     # print "-----> Downloading Insight Agent from: #{dashboard_agent_uri}\n"
-    JavaBuildpack::Util.download('Insight Agent', dashboard_agent_uri, 'Insight Agent', INSIGHT_JAR_NAME, DOWNLOAD_DIR)
+    JavaBuildpack::Util.download('Insight Agent', dashboard_agent_uri, '', INSIGHT_JAR_NAME, DOWNLOAD_DIR)
     installer_jar = DOWNLOAD_DIR + INSIGHT_JAR_NAME
     if File.exists?(installer_jar)
       run_insight_installer(installer_jar, dashboard_host, java_home, container_home)
